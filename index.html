@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Event Dashboard</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+  
+</head>
+<body>
+    <nav>
+       <div>
+        <div>   
+        </div>
+        <div>
+          <input 
+          type="text"
+          placeholder="Search events..."/>  
+        </div>
+
+        <button>
+             Add Event
+        </button>
+
+       </div> 
+    </nav>
+
+     <!-- ================= HERO SECTION ================= -->
+
+     <section>
+    <!-- Decorative Circles -->
+
+        <div></div>
+
+        <div></div>
+
+        <div>
+
+ <!-- Small Badge -->
+
+         <div>
+
+            <div>
+                <p>
+                    Live Registration System
+                </p>
+            </div>
+
+ <!-- Heading -->
+
+            <h1>
+                Student Event
+                <span> Registration Dashboard</span>
+            </h1>
+
+            <!-- Description -->
+
+            <p>
+                Discover, register, and manage your campus events —
+        all in one place. Real-time updates, instant
+        confirmations, no page reloads. 
+            </p>
+         </div>
+        </div>
+     </section>
+
+     <!-- ================= STATISTICS ================= -->
+
+     <section>
+
+        <!-- Card 1 -->
+
+        <div>
+
+        <p>
+            Total Events
+        </p>
+
+        <h2>
+            0
+        </h2>
+
+        <P>
+           across all categories  
+        </P>
+
+        </div>
+
+ <!-- Card 2 -->
+
+        <div>
+
+            <p>
+                Registered Students
+            </p>
+
+            <h2>
+              0
+            </h2>
+
+            <p>
+                total enrollments
+            </p>
+
+        </div>
+
+<!-- Card 3 -->
+
+        <div>
+
+            <p>
+              Available Seats
+            </p>
+
+            <h2>
+             0
+            </h2>
+
+            <p>
+             still open for registration
+            </p>
+
+        </div>
+     </section>
+
+
+     <!-- ===================== ADD EVENT FORM ===================== -->
+
+     <div>
+
+        <div>
+        <h2>Add New Event</h2>
+
+        <div>auto-saved to local storage</div>
+
+        </div>
+
+        <form>
+            <div>
+              <label>Event Title</label>
+              <input type="text" id="eventTitle" placeholder="e.g., AI Bootcamp">  
+            </div>
+
+             <div>
+                <label>Total Seats</label> 
+                <select>
+                    <option value="Technology">Technology</option>
+                    <option value="Arts">Arts</option>
+                    <option value="Culture">Culture</option>
+                    <option value="Leadership">Leadership</option>
+                    <option value="Literature">Literature</option>
+                    <option value="Music">Music</option>
+                    <option value="Science">Science</option>
+                    <option value="Sports">Sports</option>
+                </select>
+             </div>
+
+            <div>
+                <label>Category</label> 
+                <input type="number" id="eventSeats" placeholder="e.g., 30" >
+             </div>
+
+             <div>
+
+                <button  type="submit">Create Event</button>
+             </div>
+
+        </form>
+
+        <div></div>
+     </div>
+
+      <!-- ===================== EVENT DISPLAY AREA + SEARCH ===================== -->
+
+      <div>
+
+        <h2>All Events & Registrations</h2>
+
+        <span>0 events</span>
+
+      </div>
+
+       <div id="eventsGridContainer"></div>
+
+        <div  id="noEventsMessage">No events match your search or filter. Try adding a new event!</div>
+</body>
+</html>
