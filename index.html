@@ -5,195 +5,233 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Event Dashboard</title>
      <script src="https://cdn.tailwindcss.com"></script>
+      <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css"
+  />
   
 </head>
 <body class="bg-gray-100 font-sans">
-    <nav class="bg-white shadow-sm px-6 py-4">
-       <div class="max-w-7xl mx-auto flex items-center justify-between">
-        <div class="flex items-center gap-3"> 
-        </div>
-        <div class="bg-blue-600 w-12 h-12 rounded-2xl flex items-center justify-center text-white text-xl"></div>
 
-         <h1 class="text-3xl font-black text-slate-800">
+  <!-- ================= NAVBAR ================= -->
+
+  <nav class="bg-white shadow-sm px-6 py-4">
+
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+      <!-- Logo -->
+
+      <div class="flex items-center gap-3">
+
+        <div class="bg-blue-600 w-12 h-12 rounded-2xl flex items-center justify-center text-white text-xl">
+          <i class="ri-graduation-cap-line"></i>
+        </div>
+
+        <h1 class="text-3xl font-black text-slate-800">
           EventHub.
         </h1>
 
+      </div>
 
-        <div class="hidden md:flex items-center bg-gray-100 px-5 py-3 rounded-2xl w-[480px] border">
-          <input 
+      <!-- Search -->
+
+      <div class="hidden md:flex items-center bg-gray-100 px-5 py-3 rounded-2xl w-[480px] border">
+
+        <i class="ri-search-line text-gray-400 text-xl"></i>
+
+        <input
           type="text"
           placeholder="Search events..."
-           class="bg-transparent outline-none ml-3 w-full text-lg"
-          />  
-        </div>
-
-        <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold text-xl">
-             Add Event
-        </button>
-
-       </div> 
-    </nav>
-
-     <!-- ================= HERO SECTION ================= -->
-
-     <section class="relative overflow-hidden bg-gradient-to-r from-blue-700 to-indigo-500 text-white">
->
-    <!-- Decorative Circles -->
-
-        <div  class="absolute w-[500px] h-[500px] bg-white/5 rounded-full -left-40 top-20"></div>
-
-        <div class="absolute w-[400px] h-[400px] bg-white/5 rounded-full -right-20 -top-10"></div>
-
-        <div class="max-w-7xl mx-auto px-6 py-24 text-center relative z-10">
-
- <!-- Small Badge -->
-
-         <div class="inline-flex items-center gap-3 bg-white/10 border border-white/20 px-8 py-3 rounded-full">
-
-            <div class="w-3 h-3 bg-green-400 rounded-full">
-                <p class="font-semibold text-lg">
-                    Live Registration System
-                </p>
-            </div>
-
- <!-- Heading -->
-
-            <h1 class="text-5xl md:text-7xl font-black mt-10 leading-tight">
-                Student Event
-                <span class="block text-yellow-400"> Registration Dashboard</span>
-            </h1>
-
-            <!-- Description -->
-
-            <p class="max-w-4xl mx-auto text-xl md:text-2xl text-gray-200 mt-8 leading-relaxed">
-                Discover, register, and manage your campus events —
-        all in one place. Real-time updates, instant
-        confirmations, no page reloads. 
-            </p>
-         </div>
-        </div>
-     </section>
-
-     <!-- ================= STATISTICS ================= -->
-
-     <section class="max-w-7xl mx-auto px-6 -mt-10 relative z-20">
-
-        <div  class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Card 1 -->
-
-        <div class="bg-white rounded-3xl shadow-lg p-8 border border-gray-100">
-
-        <p class="uppercase tracking-[4px] text-sm text-slate-400 font-bold">
-            Total Events
-        </p>
-
-        <h2 class="text-6xl font-black text-blue-600 mt-5">
-            0
-        </h2>
-
-        <P class="text-gray-400 text-xl mt-3">
-           across all categories  
-        </P>
-
-        </div>
-
- <!-- Card 2 -->
-
-        <div class="bg-white rounded-3xl shadow-lg p-8 border border-gray-100">
-
-            <p class="uppercase tracking-[4px] text-sm text-slate-400 font-bold">
-                Registered Students
-            </p>
-
-            <h2  class="text-6xl font-black text-green-600 mt-5">
-              0
-            </h2>
-
-            <p class="text-gray-400 text-xl mt-3">
-                total enrollments
-            </p>
-
-        </div>
-
-<!-- Card 3 -->
-
-        <div class="bg-white rounded-3xl shadow-lg p-8 border border-gray-100">
-
-            <p class="uppercase tracking-[4px] text-sm text-slate-400 font-bold">
-              Available Seats
-            </p>
-
-            <h2 class="text-6xl font-black text-orange-500 mt-5">
-             0
-            </h2>
-
-            <p class="text-gray-400 text-xl mt-3">
-             still open for registration
-            </p>
-
-        </div>
-</div>
-     </section>
-
-
-     <!-- ===================== ADD EVENT FORM ===================== -->
-
-     <div>
-
-        <div>
-        <h2>Add New Event</h2>
-
-        <div>auto-saved to local storage</div>
-
-        </div>
-
-        <form>
-            <div>
-              <label>Event Title</label>
-              <input type="text" id="eventTitle" placeholder="e.g., AI Bootcamp">  
-            </div>
-
-             <div>
-                <label>Total Seats</label> 
-                <select>
-                    <option value="Technology">Technology</option>
-                    <option value="Arts">Arts</option>
-                    <option value="Culture">Culture</option>
-                    <option value="Leadership">Leadership</option>
-                    <option value="Literature">Literature</option>
-                    <option value="Music">Music</option>
-                    <option value="Science">Science</option>
-                    <option value="Sports">Sports</option>
-                </select>
-             </div>
-
-            <div>
-                <label>Category</label> 
-                <input type="number" id="eventSeats" placeholder="e.g., 30" >
-             </div>
-
-             <div>
-
-                <button  type="submit">Create Event</button>
-             </div>
-
-        </form>
-
-        <div></div>
-     </div>
-
-      <!-- ===================== EVENT DISPLAY AREA + SEARCH ===================== -->
-
-      <div>
-
-        <h2>All Events & Registrations</h2>
-
-        <span>0 events</span>
+          class="bg-transparent outline-none ml-3 w-full text-lg"
+        />
 
       </div>
 
-       <div id="eventsGridContainer"></div>
+      <!-- Button -->
 
-        <div  id="noEventsMessage">No events match your search or filter. Try adding a new event!</div>
+      <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold text-xl">
+
+        <i class="ri-add-line"></i>
+
+        Add Event
+
+      </button>
+
+    </div>
+
+  </nav>
+
+  <!-- ================= HERO SECTION ================= -->
+
+  <section class="relative overflow-hidden bg-gradient-to-r from-blue-700 to-indigo-500 text-white">
+
+    <!-- Decorative Circles -->
+
+    <div class="absolute w-[500px] h-[500px] bg-white/5 rounded-full -left-40 top-20"></div>
+
+    <div class="absolute w-[400px] h-[400px] bg-white/5 rounded-full -right-20 -top-10"></div>
+
+    <div class="max-w-7xl mx-auto px-6 py-24 text-center relative z-10">
+
+      <!-- Small Badge -->
+
+      <div class="inline-flex items-center gap-3 bg-white/10 border border-white/20 px-8 py-3 rounded-full">
+
+        <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+
+        <p class="font-semibold text-lg">
+          Live Registration System
+        </p>
+
+      </div>
+
+      <!-- Heading -->
+
+      <h1 class="text-5xl md:text-7xl font-black mt-10 leading-tight">
+
+        Student Event
+
+        <span class="block text-yellow-400">
+          Registration Dashboard
+        </span>
+
+      </h1>
+
+      
+      
+
+      <p class="max-w-4xl mx-auto text-xl md:text-2xl text-gray-200 mt-8 leading-relaxed">
+
+        Discover, register, and manage your campus events —
+        all in one place. Real-time updates, instant
+        confirmations, no page reloads.
+
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- ================= STATISTICS ================= -->
+
+  <section class="max-w-7xl mx-auto px-6 -mt-10 relative z-20">
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <!-- Card 1 -->
+
+      <div class="bg-white rounded-3xl shadow-lg p-8 border border-gray-100">
+
+        <p class="uppercase tracking-[4px] text-sm text-slate-400 font-bold">
+          Total Events
+        </p>
+
+        <h2 class="text-6xl font-black text-blue-600 mt-5">
+          0
+        </h2>
+
+        <p class="text-gray-400 text-xl mt-3">
+          across all categories
+        </p>
+
+      </div>
+
+      <!-- Card 2 -->
+
+      <div class="bg-white rounded-3xl shadow-lg p-8 border border-gray-100">
+
+        <p class="uppercase tracking-[4px] text-sm text-slate-400 font-bold">
+          Registered Students
+        </p>
+
+        <h2 class="text-6xl font-black text-green-600 mt-5">
+          0
+        </h2>
+
+        <p class="text-gray-400 text-xl mt-3">
+          total enrollments
+        </p>
+
+      </div>
+
+      <!-- Card 3 -->
+
+      <div class="bg-white rounded-3xl shadow-lg p-8 border border-gray-100">
+
+        <p class="uppercase tracking-[4px] text-sm text-slate-400 font-bold">
+          Available Seats
+        </p>
+
+        <h2 class="text-6xl font-black text-orange-500 mt-5">
+          0
+        </h2>
+
+        <p class="text-gray-400 text-xl mt-3">
+          still open for registration
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  
+    <!-- ===================== ADD EVENT FORM ===================== -->
+    <div class="bg-white rounded-2xl shadow-md border border-gray-200 p-5 md:p-6 mb-10">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-5">
+        <h2 class="text-xl font-bold text-gray-800 flex items-center gap-2"> Add New Event</h2>
+        <div class="text-xs text-gray-400 bg-gray-100 px-3 py-1 rounded-full"> auto-saved to local storage</div>
+      </div>
+      <form id="addEventForm" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="md:col-span-1">
+          <label class="block text-md font-medium text-gray-700 mb-1">Event Title </label>
+          <input type="text" id="eventTitle" placeholder="e.g., AI Bootcamp" class="w-full px-4 py-2 border border-gray-300 rounded-xl">
+        </div>
+        <div>
+          <label class="block text-md font-medium text-gray-700 mb-1">Category </label>
+          <select id="eventCategory" class="w-full px-4 py-2 border border-gray-300 rounded-xl bg-white">
+            <option value="Technology">Technology</option>
+            <option value="Arts">Arts</option>
+            <option value="Culture">Culture</option>
+            <option value="Leadership">Leadership</option>
+            <option value="Literature">Literature</option>
+            <option value="Music">Music</option>
+            <option value="Science">Science</option>
+            <option value="Sports">Sports</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-md font-medium text-gray-700 mb-1">Total Seats </label>
+          <input type="number" id="eventSeats" placeholder="e.g., 30" min="1" class="w-full px-4 py-2 border border-gray-300 rounded-xl">
+        </div>
+        <div class="flex items-end">
+          <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-xl shadow-md  flex items-center justify-center gap-2"> Create Event</button>
+        </div>
+      </form>
+      <div id="formErrorMsg" class="text-red-500 text-sm mt-3 hidden"></div>
+    </div>
+
+
+      <!-- ===================== EVENT DISPLAY AREA + SEARCH ===================== -->
+    <div class="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 pb-3">
+      <h2 class="text-xl font-bold text-gray-800 flex items-center gap-2"> All Events & Registrations</h2>
+      <span class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full" id="eventCountBadge">0 events</span>
+    </div>
+
+    <div id="eventsGridContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 event-grid-scroll">
+    </div>
+    <div id="noEventsMessage" class="hidden text-center py-12 bg-gray-50 rounded-2xl mt-4">
+      <p class="text-gray-500">No events match your search or filter. Try adding a new event!</p>
+    </div>
+
+  </main>
+
+  <!-- floating toast notification -->
+  <div id="toastMsg" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-5 py-3 rounded-full shadow-xl flex items-center gap-3 text-sm font-medium z-50 backdrop-blur-sm">
+    <i id="toastIcon" class="fas fa-check-circle text-emerald-400"></i> <span id="toastText">Action completed</span>
+  </div>
+</body>
+</html>
 </body>
 </html>
