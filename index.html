@@ -7,18 +7,27 @@
      <script src="https://cdn.tailwindcss.com"></script>
   
 </head>
-<body>
-    <nav>
-       <div>
-        <div>   
+<body class="bg-gray-100 font-sans">
+    <nav class="bg-white shadow-sm px-6 py-4">
+       <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-3"> 
         </div>
-        <div>
+        <div class="bg-blue-600 w-12 h-12 rounded-2xl flex items-center justify-center text-white text-xl"></div>
+
+         <h1 class="text-3xl font-black text-slate-800">
+          EventHub.
+        </h1>
+
+
+        <div class="hidden md:flex items-center bg-gray-100 px-5 py-3 rounded-2xl w-[480px] border">
           <input 
           type="text"
-          placeholder="Search events..."/>  
+          placeholder="Search events..."
+           class="bg-transparent outline-none ml-3 w-full text-lg"
+          />  
         </div>
 
-        <button>
+        <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold text-xl">
              Add Event
         </button>
 
@@ -27,35 +36,36 @@
 
      <!-- ================= HERO SECTION ================= -->
 
-     <section>
+     <section class="relative overflow-hidden bg-gradient-to-r from-blue-700 to-indigo-500 text-white">
+>
     <!-- Decorative Circles -->
 
-        <div></div>
+        <div  class="absolute w-[500px] h-[500px] bg-white/5 rounded-full -left-40 top-20"></div>
 
-        <div></div>
+        <div class="absolute w-[400px] h-[400px] bg-white/5 rounded-full -right-20 -top-10"></div>
 
-        <div>
+        <div class="max-w-7xl mx-auto px-6 py-24 text-center relative z-10">
 
  <!-- Small Badge -->
 
-         <div>
+         <div class="inline-flex items-center gap-3 bg-white/10 border border-white/20 px-8 py-3 rounded-full">
 
-            <div>
-                <p>
+            <div class="w-3 h-3 bg-green-400 rounded-full">
+                <p class="font-semibold text-lg">
                     Live Registration System
                 </p>
             </div>
 
  <!-- Heading -->
 
-            <h1>
+            <h1 class="text-5xl md:text-7xl font-black mt-10 leading-tight">
                 Student Event
-                <span> Registration Dashboard</span>
+                <span class="block text-yellow-400"> Registration Dashboard</span>
             </h1>
 
             <!-- Description -->
 
-            <p>
+            <p class="max-w-4xl mx-auto text-xl md:text-2xl text-gray-200 mt-8 leading-relaxed">
                 Discover, register, and manage your campus events —
         all in one place. Real-time updates, instant
         confirmations, no page reloads. 
