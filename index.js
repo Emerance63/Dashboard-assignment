@@ -30,3 +30,36 @@ function saveToLocalStorage() {
   localStorage.setItem("StudentDashboard", JSON.stringify(StudentDashboard));
 }
 saveToLocalStorage();
+
+const addeventBtn =document.getElementById("addeventBtn");
+const totalEvent =document.getElementById("totalEvent");
+const totalRegistered =document.getElementById("totalRegistered");
+const availableseat =document.getElementById("availableSeat");
+const addEventForm = document.getElementById("addEventForm");
+const eventTitle =document.getElementById("eventTitle");
+const eventCategory =document.getElementById("eventCategory");
+const eventSeats =document.getElementById("eventSeats");
+const formErrorMsg =document.getElementById("formErrorMsg");
+const eventCountBadge =document.getElementById("eventCountBadge");
+const noEventsMessage =document.getElementById("noEventsMessage");
+
+// -------statistics--------
+
+ function updateStatistics() {
+
+  totalEvent.textContent = StudentDashboard.length;
+
+  const registered = StudentDashboard.reduce(
+    (total, event) => total + event.registered,
+    0
+  );
+
+  totalRegistered.textContent = registered;
+
+  const remaining = StudentDashboard.reduce(
+    (total, event) => total + (event.seats - event.registered),
+    0
+  );
+
+  availableseat.textContent = remaining;
+}
