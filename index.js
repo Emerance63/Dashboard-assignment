@@ -29,6 +29,7 @@ let StudentDashboard = JSON.parse(localStorage.getItem("StudentDashboard")) || [
 function saveToLocalStorage() {
   localStorage.setItem("StudentDashboard", JSON.stringify(StudentDashboard));
 }
+saveToLocalStorage();
 
 // ----------DOM------------
 
@@ -42,26 +43,25 @@ const eventCategory = document.getElementById("eventCategory");
 const eventSeats = document.getElementById("eventSeats");
 const formErrorMsg = document.getElementById("formErrorMsg");
 const eventsGridContainer = document.getElementById("eventsGridContainer");
-const noEventsMessage = document.getElementById("noEventsMessage");
+// const noEventsMessage = document.getElementById("noEventsMessage");
 const submit = document.getElementById("submit");
 const searchInput = document.getElementById("searchInput");
 
 // -------statistics--------
 
 function updateStatistics() {
-
   totalEvent.textContent = StudentDashboard.length;
 
   const registered = StudentDashboard.reduce(
     (total, event) => total + event.registered,
-    0
+    0,
   );
 
   totalRegistered.textContent = registered;
 
   const remaining = StudentDashboard.reduce(
     (total, event) => total + (event.seats - event.registered),
-    0
+    0,
   );
 
   availableseat.textContent = remaining;
@@ -70,29 +70,24 @@ function updateStatistics() {
 // ---------addbtn------
 
 addeventBtn.addEventListener("click", function () {
-
   if (addEventForm.style.display === "none") {
     addEventForm.style.display = "block";
   } else {
     addEventForm.style.display = "none";
   }
-
 });
 
 // --------render cards--------
 
 function renderform(filteredEvents = StudentDashboard) {
-
   eventsGridContainer.innerHTML = "";
 
-  filteredEvents.forEach(event => {
-
+  filteredEvents.forEach((event) => {
     const remainingSeats = event.seats - event.registered;
 
     const eventCard = document.createElement("div");
 
-    eventCard.className =
-      "bg-white p-5 rounded-lg shadow-lg space-y-2";
+    eventCard.className = "bg-white p-5 rounded-lg shadow-lg space-y-2";
 
     eventCard.innerHTML = `
       <h3 class="text-xl font-bold">${event.title}</h3>
@@ -125,26 +120,29 @@ function renderform(filteredEvents = StudentDashboard) {
     `;
 
     eventsGridContainer.appendChild(eventCard);
-
   });
 
   // ------No Events Message------
 
-  if (filteredEvents.length >= 1) {
-    noEventsMessage.style.display = "none";
-  } else {
-    noEventsMessage.style.display = "block";
-  }
+  //   if (filteredEvents.length >= 1) {
+  //     noEventsMessage.style.display = "none";
+  //   } else {
+  //     noEventsMessage.style.display = "block";
+  //   }
+
+//   function toggleEmptyState() {
+//     eventsGridContainer.style.display =
+//       filteredEvents.length == 0 ? "none" : "block";
+      
+//   }
 
   // --------Register Buttons--------
 
-  document.querySelectorAll(".registerBtn").forEach(button => {
-
+  document.querySelectorAll(".registerBtn").forEach((button) => {
     button.addEventListener("click", function () {
-
       const id = Number(button.dataset.id);
 
-      const event = StudentDashboard.find(e => e.id === id);
+      const event = StudentDashboard.find((e) => e.id === id);
 
       if (event.registered >= event.seats) {
         alert("No seats available!");
@@ -156,20 +154,16 @@ function renderform(filteredEvents = StudentDashboard) {
       saveToLocalStorage();
       renderform();
       updateStatistics();
-
     });
-
   });
 
   // --------Cancel Buttons--------
 
-  document.querySelectorAll(".cancelBtn").forEach(button => {
-
+  document.querySelectorAll(".cancelBtn").forEach((button) => {
     button.addEventListener("click", function () {
-
       const id = Number(button.dataset.id);
 
-      const event = StudentDashboard.find(e => e.id === id);
+      const event = StudentDashboard.find((e) => e.id === id);
 
       if (event.registered <= 0) {
         alert("No registrations to cancel!");
@@ -181,34 +175,37 @@ function renderform(filteredEvents = StudentDashboard) {
       saveToLocalStorage();
       renderform();
       updateStatistics();
-
     });
-
   });
-
 }
 
 // --------submit event--------
 
-submit.addEventListener("click", function (event) {
+// --------submit event--------
+
+addEventForm.addEventListener("submit", function (event) {
 
   event.preventDefault();
 
   const title = eventTitle.value.trim();
-  const category = eventCategory.value.trim();
+
+  const category = eventCategory.value;
+
   const seats = parseInt(eventSeats.value);
 
   // --------Validation--------
 
-  if (!title || !category || isNaN(seats) || seats <= 0) {
+  if (title === "" || category === "" || isNaN(seats) || seats <= 0) {
+
+    formErrorMsg.classList.remove("hidden");
 
     formErrorMsg.textContent =
-      "Please fill in all fields correctly.";
+      "Please fill all fields correctly";
 
     return;
   }
 
-  formErrorMsg.textContent = "";
+  formErrorMsg.classList.add("hidden");
 
   // --------Create Object--------
 
@@ -216,14 +213,16 @@ submit.addEventListener("click", function (event) {
 
     id:
       StudentDashboard.length > 0
-        ? Math.max(...StudentDashboard.map(e => e.id)) + 1
+        ? Math.max(...StudentDashboard.map((e) => e.id)) + 1
         : 1,
 
     title: title,
-    category: category,
-    seats: seats,
-    registered: 0
 
+    category: category,
+
+    seats: seats,
+
+    registered: 0,
   };
 
   // --------Add Event--------
@@ -239,33 +238,13 @@ submit.addEventListener("click", function (event) {
   // --------Clear Inputs--------
 
   eventTitle.value = "";
+
   eventCategory.value = "";
+
   eventSeats.value = "";
 
   addEventForm.style.display = "none";
 
 });
-
-// --------Search--------
-
-searchInput.addEventListener("input", function () {
-
-  const value = searchInput.value.toLowerCase();
-
-  const filteredEvents = StudentDashboard.filter(event =>
-
-    event.title.toLowerCase().includes(value) ||
-
-    event.category.toLowerCase().includes(value)
-
-  );
-
-  renderform(filteredEvents);
-
-});
-
-// --------Initial Load--------
-
 renderform();
-
 updateStatistics();
