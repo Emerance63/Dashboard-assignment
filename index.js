@@ -165,10 +165,10 @@ function renderform(filteredEvents = StudentDashboard) {
 
       const event = StudentDashboard.find((e) => e.id === id);
 
-      if (event.registered <= 0) {
-        alert("No registrations to cancel!");
-        return;
-      }
+    //   if (event.registered <= 0) {
+    //     alert("No registrations to cancel!");
+    //     return;
+    //   }
 
       event.registered--;
 
@@ -178,6 +178,7 @@ function renderform(filteredEvents = StudentDashboard) {
     });
   });
 }
+
 
 // --------submit event--------
 
@@ -235,6 +236,7 @@ addEventForm.addEventListener("submit", function (event) {
 
   updateStatistics();
 
+
   // --------Clear Inputs--------
 
   eventTitle.value = "";
@@ -243,8 +245,32 @@ addEventForm.addEventListener("submit", function (event) {
 
   eventSeats.value = "";
 
-  addEventForm.style.display = "none";
+  addEventForm.style.display = "block";
 
 });
 renderform();
 updateStatistics();
+
+
+
+//---------filter Reseach ---------
+
+//--------- Search ---------
+
+const searchEvent = document.getElementById("seachEvent");
+
+searchEvent.addEventListener("input", function () {
+
+  const searchTerm = searchEvent.value.toLowerCase().trim();
+
+  const filteredEvents = StudentDashboard.filter((event) =>
+
+    event.title.toLowerCase().includes(searchTerm) ||
+
+    event.category.toLowerCase().includes(searchTerm)
+
+  );
+
+  renderform(filteredEvents);
+
+});
