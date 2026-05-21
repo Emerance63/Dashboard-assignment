@@ -77,7 +77,9 @@ addeventBtn.addEventListener("click", function () {
   }
 });
 
-// --------render cards--------
+// --------render cards--------//If no data is passed,
+// use StudentDashboard array automatically
+
 
 function renderform(filteredEvents = StudentDashboard) {
   eventsGridContainer.innerHTML = "";
@@ -165,12 +167,11 @@ function renderform(filteredEvents = StudentDashboard) {
 
       const event = StudentDashboard.find((e) => e.id === id);
 
-    //   if (event.registered <= 0) {
-    //     alert("No registrations to cancel!");
-    //     return;
-    //   }
-
-      event.registered--;
+      if(event.registered <= 0){
+        alert("No one is registered for this event!");
+        event.registered--;
+      }
+      
 
       saveToLocalStorage();
       renderform();
@@ -192,7 +193,7 @@ addEventForm.addEventListener("submit", function (event) {
 
   const category = eventCategory.value;
 
-  const seats = parseInt(eventSeats.value);
+  const seats = parseInt(eventSeats.value);//Converts text into a whole number
 
   // --------Validation--------
 
@@ -209,7 +210,7 @@ addEventForm.addEventListener("submit", function (event) {
   formErrorMsg.classList.add("hidden");
 
   // --------Create Object--------
-
+// This code automatically generates that next number
   const newEvent = {
 
     id:
@@ -273,4 +274,4 @@ searchEvent.addEventListener("input", function () {
 
   renderform(filteredEvents);
 
-});
+}); 
