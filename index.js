@@ -169,9 +169,9 @@ function renderform(filteredEvents = StudentDashboard) {
 
       if(event.registered <= 0){
         alert("No one is registered for this event!");
-        event.registered--;
+        return;
       }
-      
+       event.registered--;
 
       saveToLocalStorage();
       renderform();
